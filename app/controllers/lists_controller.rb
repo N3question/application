@@ -15,7 +15,13 @@ class ListsController < ApplicationController
   redirect_to'/top'
  end
 
- def index
+ def index #一覧画面用のアクションとして定義
+  @lists = List.all #全てのデータを取得する記述
+   # @lists...インスタンス変数
+   # all...メソッドの一種。istsテーブルに保存されている全てのデータを取得することができます。
+   #       そのモデルがやりとりしているデータベースの
+   #       テーブルに保存されている、
+   #       全てのレコードをまとめて取得
  end
 
  def show
@@ -24,9 +30,10 @@ class ListsController < ApplicationController
  def edit
  end
   
- private
- # ストロングパラメータ。list_paramsの箇所
- def list_params
+ private #一種の境界線。controllerの中でしか呼び出せません
+ # Controllerファイルの一番下のendのすぐ上に書く。 
+ # ストロングパラメータ。list_paramsの箇所。
+ def list_params #保存できるカラムを限定、マスアサインメント脆弱性を防ぐ
   params.require(:list).permit(:title,:body)
  end
 
