@@ -22,10 +22,25 @@ class ListsController < ApplicationController
    #       そのモデルがやりとりしているデータベースの
    #       テーブルに保存されている、
    #       全てのレコードをまとめて取得
+   #       idに関係なく、存在するレコードを全て取得する
  end
 
  def show
+  @list = List.find(params[:id]) 
+  # 今回はレコードを1件だけ取得する
+  # インスタンス変数名は単数形の「@list
+  # findメソッド...引数を受取、idカラムを引数と比較し
+  #.               レコードを取得するメソッド
  end
+ 
+  # List.find(1) #listsテーブルの中にあるidが1のレコードを取得
+  # List.find(2) #listsテーブルの中にあるidが2のレコードを取得
+  
+  # 「List.find(params[:id])」という記述が意味していること
+  # /lists/1    => List.find(params[:id]) => idが1のレコードを取得
+  # /lists/3    => List.find(params[:id]) => idが3のレコードを取得
+  # /lists/hoge => List.find(params[:id]) => idがhogeのレコードを取得(普通は存在しないのでエラーになります)
+ 
 
  def edit
  end
