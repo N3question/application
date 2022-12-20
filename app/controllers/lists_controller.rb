@@ -1,13 +1,33 @@
 class ListsController < ApplicationController
-  def new
-  end
+ def new
+  # Viewへ渡すためのインスタンス変数に
+  # 空のModelオブジェクトを生成する。
+ @list = List.new
+ end
+  
+  #以下投稿を保存するためのcreateアクションを追加
+ def create
+  # １.&2. データを受け取り新規登録するためのインスタンス作成
+  list = List.new(list_params)
+  # 3. データをデータベースに保存するためのsaveメソッド実行
+  list.save
+  # 4. トップ画面へリダイレクト
+  redirect_to'/top'
+ end
 
-  def index
-  end
+ def index
+ end
 
-  def show
-  end
+ def show
+ end
 
-  def edit
-  end
+ def edit
+ end
+  
+ private
+ # ストロングパラメータ。list_paramsの箇所
+ def list_params
+  params.require(:list).permit(:title,:body)
+ end
+
 end
