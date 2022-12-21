@@ -5,16 +5,13 @@ class ListsController < ApplicationController
  @list = List.new
  end
   
-  #以下投稿を保存するためのcreateアクションを追加
- def create
+ def create #投稿を保存するためのアクションを定義
   # １.&2. データを受け取り新規登録するためのインスタンス作成
   list = List.new(list_params)
   # 3. データをデータベースに保存するためのsaveメソッド実行
   list.save
   # 4. トップ画面へリダイレクト
-  # redirect_to'/top'　削除して以下コードに変更
-  # 詳細画面へリダイレクトさせる
-  redirect_to list_path(list.id)
+  redirect_to'/top'
  end
 
  def index #一覧画面用のアクションとして定義
@@ -27,7 +24,7 @@ class ListsController < ApplicationController
    #       idに関係なく、存在するレコードを全て取得する
  end
 
- def show
+ def show #詳細画面の表示のアクションとして定義
   @list = List.find(params[:id]) 
   # 今回はレコードを1件だけ取得する
   # インスタンス変数名は単数形の「@list
@@ -44,7 +41,14 @@ class ListsController < ApplicationController
   # /lists/hoge => List.find(params[:id]) => idがhogeのレコードを取得(普通は存在しないのでエラーになります)
  
 
- def edit
+ def edit #編集機能のアクションとして定義
+  @list = List.find(params[:id]) # findメソッドを用いて、データを取得
+ end
+ 
+ def update #更新機能のアクションとして定義
+  list = List.find(params[:id])
+  list.update(list_params)
+  redirect_to list_path(list.id)
  end
   
  private #一種の境界線。controllerの中でしか呼び出せません
