@@ -6,9 +6,10 @@ Rails.application.routes.draw do
 # get 'lists/index' #削除し以下１行追加
   get 'lists'=>'lists#index' # indexアクションへのルーティングを作成
 # get 'lists/show' #削除し以下１行追加
-  get 'lists/:id'=>'lists#show' 
+  get 'lists/:id'=>'lists#show',as:'list' # as:オプションを追加することで設定
    # .../lists/1 や .../lists/3 に該当
    # URLの部分...「lists/:id」idの前に :（コロン）を付けて指定
+   # 'lists#show'の設定を、listとして利用できる」の意味
   get 'lists/edit'
   
 # get 'homes/top'
