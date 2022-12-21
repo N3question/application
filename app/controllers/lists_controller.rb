@@ -11,7 +11,9 @@ class ListsController < ApplicationController
   # 3. データをデータベースに保存するためのsaveメソッド実行
   list.save
   # 4. トップ画面へリダイレクト
-  redirect_to'/top'
+  # redirect_to'/top'　削除。以下に変更
+  # 詳細画面へリダイレクト
+  redirect_to list_path(list.id)
  end
 
  def index #一覧画面用のアクションとして定義
@@ -55,7 +57,11 @@ class ListsController < ApplicationController
  # Controllerファイルの一番下のendのすぐ上に書く。 
  # ストロングパラメータ。list_paramsの箇所。
  def list_params #保存できるカラムを限定、マスアサインメント脆弱性を防ぐ
-  params.require(:list).permit(:title,:body)
+  params.require(:list).permit(:title,:body,:image)
+  # ストロングパラメータ内にimageを追加し、imageのデータの取得を許可
+  # ここまでで画像が投稿が可能に。
+  # --NEXT--
+  # 画像を表示するための記述をindex(一覧画面)とshow(詳細画面)に追記
  end
 
 end

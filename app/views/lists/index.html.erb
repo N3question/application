@@ -20,5 +20,25 @@
   <%= link_to list.title,"/lists/#{list.id}" %>
   <!--< %= link_to 表示させるテキスト , リンク先URL [,オプション] % >-->
  </span>
-
-<% end %>
+ 
+ <!--以下追加-->
+ <p>画像</p>
+ <!--以下imageが保存されていないために起きるエラー対策-->
+ <!--if式を使う...◎-->
+ <% if list.image.attached? %> <!--if式のために追加-->
+  <%= image_tag list.image, size: "200×200" %>
+   <!--HTMLのimgタグを生成するimage_tagヘルパー-->
+   <!--listに紐ついているimageをimage_tagに渡すことで画像を表示-->
+   <!--オプションとしてsizeを指定-->
+   
+  <%else%> <!--if式のために追加-->
+   <%= image_tag 'no_image',size: "200×200" %> <!--if式のために追加-->
+  <%end%> <!--if式のために追加-->
+  
+  <!--解説-->
+  <!--if式の条件...list.image.attached?-->
+  <!--list.imageに対して.attached?というimageが存在するかを確認-->
+  <!--(画像)が存在していれば(true)、存在していなければ(false)-->
+  <!--(image)が存在していれば(list.image)、なければ用意した(no_image)-->
+  
+<%end%>
