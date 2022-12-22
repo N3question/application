@@ -1,3 +1,5 @@
+# コントローラ
+
 class ListsController < ApplicationController
  def new
   # Viewへ渡すためのインスタンス変数に
@@ -51,6 +53,19 @@ class ListsController < ApplicationController
   list = List.find(params[:id])
   list.update(list_params)
   redirect_to list_path(list.id)
+ end
+ 
+ # ビュー側で実装する「削除」ボタンをクリックすると、削除リストのid付きでURLが送信されます。
+ # 送られてきた削除idを元にレコードが探され、そのレコードを削除します。
+ def destroy #データの削除のアクションとして定義
+  # データ（レコード）を1件取得
+  list = List.find(params[:id])
+  
+  # データ（レコード）を削除
+  list.destroy
+  
+  # 投稿一覧画面へリダイレクト
+  redirect_to '/lists'
  end
   
  private #一種の境界線。controllerの中でしか呼び出せません
