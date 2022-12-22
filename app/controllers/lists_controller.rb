@@ -17,10 +17,19 @@ class ListsController < ApplicationController
   # if式を用いる。
   if @list.save #以下バリデーションチェックの工程
    redirect_to list_path(@list.id)
-   # 対象のカラムにデータが入力　→saveメソッドでtrue。
-   # 次に表示したいページにリダイレクト
+    # 対象のカラムにデータが入力　→saveメソッドでtrue。
+    # 次に表示したいページにリダイレクト
   else
+   
+ # @lists = List.all  # renderを使う時に記述
+     # renderしたアクションが必要なインスタンス変数を用意
+     # renderを扱う上で気をつけるべきこと
+     # renderするビューに必要なインスタンス変数は、あらかじめ用意しなくてはならない
+   
    render :new
+ # render :index #<= new から indexに変更
+     # Listモデルの新規登録に失敗した際にrenderされるViewをnewからindexに変更
+   
    # 対象のカラムにデータが入力×　→saveメソッドでfalse。
    # 新規投稿ページを再表示するように設定
    # render :アクション名で、同じコントローラ内の別アクションのViewを表示

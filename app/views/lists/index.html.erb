@@ -25,7 +25,7 @@
  <p>画像</p>
  <!--以下imageが保存されていないために起きるエラー対策-->
  <!--if式を使う...◎-->
- <% if list.image.sattached? %> <!--if式のために追加-->
+ <% if list.image.attached? %> <!--if式のために追加-->
   <%= image_tag list.image, size: "200×200" %>
    <!--HTMLのimgタグを生成するimage_tagヘルパー-->
    <!--listに紐ついているimageをimage_tagに渡すことで画像を表示-->
