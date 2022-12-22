@@ -344,3 +344,40 @@ A.destroyアクション用に、ルーティングを追加
 ●update <= HTTPメソッドがPATCHのため
 ●destroy <= HTTPメソッドがDELETEのため
 ●create <= HTTPメソッドがPOSTのため
+
+# これらのアクションを実行するためにはURLだけではなく
+# HTTPメソッドも指定しなければなりません。
+
+link_toのmethodオプション...URLに対してHTTPメソッドを設定するためのオプション
+
+ーーーーーーーーーーーーーーーーーーーーーーーーーーーー
+<%= link_to '表示するテキスト', URL, method: :patch %>
+ーーーーーーーーーーーーーーーーーーーーーーーーーーーー
+※methodオプション以外は簡略化してあります。
+ルーティングの中から
+「HTTPメソッドがPATCHでURLが同じ」
+という条件で実行するべきアクションを探して実行してくれます。
+
+＜CRUD処理とは＞
+ウェブアプリケーションの基本であるCRUD（クラッド）機能を実装
+「データベースの基本的な処理のこと」
+「Railsでは保存、取得、更新、削除のこと」
+
+● create（作成）
+  # 例：list.save
+● read（読み取り）
+  # 例：List.all, List.find(params[:id])
+● update（更新）
+  # 例：list.update(list_params)
+● destroy（削除）
+  # 例：list.destroy
+  
+＜ルーティングの記述を短縮できる書き方＞
+resourcesメソッド...ルーティングを一括して自動生成してくれる機能
+
+
+＜まとめ＞
+削除機能は削除用のルーティングの追加とdestroyアクションを作成する。
+削除用ボタンにはlink_toを使用して、「method: :delete」を指定する。
+ 「method: :delete」を指定することで、削除ボタンを押すと削除用のルーティングを経由してdestroyアクションを呼び出す。
+データの削除にはdestroyメソッドを使用する。

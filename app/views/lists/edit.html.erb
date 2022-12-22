@@ -11,7 +11,10 @@
     ・名前付きルートをupdate_list
     に設定しているので、その記述をフォームに追記-->
 <!--< %= form_with model: @list do |f| % >--> <!--追記前-->
-<%= form_with model: @list,url: update_list_path(@list.id),method: :patch do |f| %> <!--追記後-->
+<!--< %= form_with model: @list,url: update_list_path(@list.id),method: :patch do |f| % > <!--追記後-->-->
+<!--以下resourcesメソッド使用後の記述（1行）-->
+<%= form_with model: @list do |f| %>
+
  <h4>タイトル</h4>
  <%= f.text_field :title %>
  
