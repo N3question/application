@@ -9,13 +9,27 @@ class ListsController < ApplicationController
   
  def create #投稿を保存するためのアクションを定義
   # １.&2. データを受け取り新規登録するためのインスタンス作成
-  list = List.new(list_params)
+  @list = List.new(list_params)
+  
   # 3. データをデータベースに保存するためのsaveメソッド実行
-  list.save
-  # 4. トップ画面へリダイレクト
-  # redirect_to'/top'　削除。以下に変更
-  # 詳細画面へリダイレクト
-  redirect_to list_path(list.id)
+  # list.save
+  # validationの結果を、コントローラで検出
+  # if式を用いる。
+  if @list.save #以下バリデーションチェックの工程
+   redirect_to list_path(@list.id)
+   # 対象のカラムにデータが入力　→saveメソッドでtrue。
+   # 次に表示したいページにリダイレクト
+  else
+   render :new
+   # 対象のカラムにデータが入力×　→saveメソッドでfalse。
+   # 新規投稿ページを再表示するように設定
+   # render :アクション名で、同じコントローラ内の別アクションのViewを表示
+   
+   # 4. トップ画面へリダイレクト
+   # redirect_to'/top'　削除。以下に変更
+   # 詳細画面へリダイレクト
+   # redirect_to list_path(@list.id)
+  end
  end
 
  def index #一覧画面用のアクションとして定義
@@ -78,5 +92,5 @@ class ListsController < ApplicationController
   # --NEXT--
   # 画像を表示するための記述をindex(一覧画面)とshow(詳細画面)に追記
  end
-
+ 
 end
