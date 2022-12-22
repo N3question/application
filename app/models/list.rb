@@ -7,7 +7,7 @@ class List < ApplicationRecord
  validates :title,presence: true
  validates :body,presence: true
  validates :image,presence: true  
- # コメントアウト中。rails cの為 => 現在解除中。
+ # コメントアウト中。rails cの為。解除中。
  
  # validatesで対象とする項目を指定し、
  # 入力されたデータのpresence（存在）をチェック

@@ -564,3 +564,27 @@ rails cを使用する事で、実際にファイルにコードを記述する�
 ▷--11章
 
 
+＜アプリケーションのレイアウトを整える＞
+
+ー手順ー
+1.index.html.erbファイルのコードを整える。
+2.application.html.erbファイルとapplication.cssファイルを
+  編集して、独自のCSSをRailsアプリケーションに反映させる。
+  
+今回は
+
+①index.html.erb
+ # 今回新たにclassを各HTML要素に指定
+ # もう一度編集
+②application.html.erb
+ # すべてのビューに反映されるHTMLファイル
+ # 全ビュー共通の「ヘッダー・フッター」を記述するのに適している
+ # HTMLファイルのheadタグもここにある
+ # フォントを変えるstylesheetを読み込む記述もする
+③application.css
+ # すべてのビューに反映されるCSSファイル
+ # app/assets/stylesheets 以下
+ # このファイルにCSSの記述をすることで、
+   オリジナルのCSSをアプリケーションに反映させることができます。
+
+の３つのファイルを編集
