@@ -1,39 +1,67 @@
-<h1>投稿一覧</h1>
-<!--以下１行ミス。「|lists|」の部分-->
-<!--%= @lists.each do list|%-->
-<!--%= @lists.each do |list| %-->
-<% @lists.each do |list| %> <!--上１行から「＝」を消した-->
-<!--「＝」があると@listsそのものが出力される-->
+<!--以下レイアウトを整える作業-->
+<div class="list-wrap">
+<% @lists.each do |list| %>
+ 
+ <div class="list-box">
+  
+  <% if list.image.attached? %>
+   <%= image_tag list,image,size: "200×200" %>
+  <%else%> 
+   <%= image_tag 'no-image',size: "200×200" %>
+  <%end%>
+  
+  <div class="list-comment">
+   <span class="list-body"><%= list.body %></span>
+   <!--< %= list.body % >はListモデルのbodyカラムに入っているデータを呼び出している記述-->
+   <span class="list-title"><%= link_to list.title,list_path(list.id) %></span>
+  </div>
+  
+ </div>
+ 
+<%end%>
+</div>
 
-<!--eachメゾット-->
+
+<!--以下元々の記述-->
+<!--コメントアウト中-->
+
+
+<!--<h1>投稿一覧</h1>-->
+ <!--以下１行ミス。「|lists|」の部分-->
+ <!--%= @lists.each do list|%-->
+ <!--%= @lists.each do |list| %-->
+<!--< % @lists.each do |list| % > <!--上１行から「＝」を消した-->
+ <!--「＝」があると@listsそのものが出力される-->
+
+  <!--eachメゾット-->
   <!--配列やハッシュがもつ要素を順番に取得して処理を実行したい時に使用-->
   <!--@lists.eachと記述することで、Listレコードの数だけ繰り返し処理-->
 
- <p>タイトル</P> 
+<!-- <p>タイトル</P> -->
  <!--<span>< %= list.title % ></span>--> <!--削除-->
    <!--各レコードの内容は、listという変数に格納-->
    <!--ここでは、list.[カラム名]と記述
    <!--投稿のタイトルが表示-->
  
  <!--上記を下記に変更-->
- <span>
-  <%= link_to list.title,"/lists/#{list.id}" %>
+<!--<span>-->
+<!--< %= link_to list.title,"/lists/#{list.id}" % >-->
   <!--< %= link_to 表示させるテキスト , リンク先URL [,オプション] % >-->
- </span>
+<!--</span>-->
  
  <!--以下追加-->
- <p>画像</p>
+<!--<p>画像</p>-->
  <!--以下imageが保存されていないために起きるエラー対策-->
  <!--if式を使う...◎-->
- <% if list.image.attached? %> <!--if式のために追加-->
-  <%= image_tag list.image, size: "200×200" %>
+<!-- < % if list.image.attached? % > <!--if式のために追加-->
+<!--< %= image_tag list.image, size: "200×200" %>-->
    <!--HTMLのimgタグを生成するimage_tagヘルパー-->
    <!--listに紐ついているimageをimage_tagに渡すことで画像を表示-->
    <!--オプションとしてsizeを指定-->
    
-  <%else%> <!--if式のために追加-->
-   <%= image_tag 'no_image',size: "200×200" %> <!--if式のために追加-->
-  <%end%> <!--if式のために追加-->
+<!--< %else% > <!--if式のために追加-->
+<!--< %= image_tag 'no_image',size: "200×200" %> <!--if式のために追加-->
+<!--< %end%> <!--if式のために追加--> 
   
   <!--解説-->
   <!--if式の条件...list.image.attached?-->
@@ -41,4 +69,4 @@
   <!--(画像)が存在していれば(true)、存在していなければ(false)-->
   <!--(image)が存在していれば(list.image)、なければ用意した(no_image)-->
   
-<%end%>
+<!--< %end% >-->
