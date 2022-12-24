@@ -22,6 +22,12 @@
  box-sizing: border-box;
 }
 
+/*フォントをCSSで呼び出し*/
+/*カラーやサイズの変更とコメントの配置の調整*/
+header,h1,nav,list-comment{
+ font-family: 'Kaushan',cursive,sans-serif;
+}
+
 header{
  width: 90%;
  padding: 15px 0;
@@ -67,8 +73,42 @@ nav{
  width: 200px;
  height: 250px;
  margin: 10px;
+ /*以下コメントの配置の調整*/
+ /*positionプロパティを指定したことで、
+ 　画像を投稿しない場合でもコメントの位置が
+ 　画像がある投稿と揃う*/
+ /*親要素に「relative」、子要素に「absolute」を指定*/
+ /*子要素の位置を親要素の範囲内で指定できる*/
+ position: relative;
 }
 
 .list-comment{
  width: 200px;
+ /*以下コメントの配置の調整*/
+ position: absolute;
+ left: 0;
+ bottom: 0;
+}
+
+.list-body{
+ /*CSSで文字を省略して表示・・・◎*/
+ /*画像に対するコメントの長さがバラバラのとき、
+ 　ここまでのコードでは綺麗に整えたレイアウトが
+ 　崩れてしまいます。*/
+ display: block; /*・・・◎*/
+ 
+ /*以下フォントカラーやサイズの変更*/
+ color: gray;
+ font-size: 12px;
+ /*ここまで*/
+ 
+ overflow: hidden; /*・・・◎*/
+ white-space: nowrap; /*・・・◎*/
+ text-overflow: ellipsis; /*・・・◎*/
+ 
+}
+
+/*以下カラーやサイズの変更*/
+.list-title{
+ font-size: 18px;
 }
