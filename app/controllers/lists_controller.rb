@@ -13,6 +13,13 @@ class ListsController < ApplicationController
   
   # 3. データをデータベースに保存するためのsaveメソッド実行
   # list.save
+  
+  # 以下フラッシュメッセージを定義し、詳細画面へリダイレクト
+  # flash[:notice] = "投稿が成功しました"
+  # redirect_to list_path(list.id)
+  # 書き方は特殊ですが、使い方はほとんど変数と同じ
+  # NEXT Viewファイルの記述
+  
   # validationの結果を、コントローラで検出
   # if式を用いる。
   if @list.save #以下バリデーションチェックの工程
