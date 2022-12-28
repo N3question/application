@@ -65,8 +65,12 @@ nav{
 }
 
 .list-wrap{
+ width: 880px; /*自分で追加*/
+ margin: 0 auto; /*自分で追加*/
  display: flex;
  flex-wrap: wrap;
+ /*justify-content: center; */
+ /*自分で追加*/
 }
 
 .list-box{
