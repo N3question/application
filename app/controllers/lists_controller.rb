@@ -28,7 +28,7 @@ class ListsController < ApplicationController
     # 次に表示したいページにリダイレクト
   else
    
- # @lists = List.all  # renderを使う時に記述
+ 　@lists = List.all  # renderを使う時に記述
      # renderしたアクションが必要なインスタンス変数を用意
      # renderを扱う上で気をつけるべきこと
      # renderするビューに必要なインスタンス変数は、あらかじめ用意しなくてはならない
@@ -50,7 +50,7 @@ class ListsController < ApplicationController
 
  def index #一覧画面用のアクションとして定義
   @lists = List.all #全てのデータを取得する記述
-   # @lists...インスタンス変数
+   # @lists...(@)付きの変数はインスタンス変数
    # all...メソッドの一種。istsテーブルに保存されている全てのデータを取得することができます。
    #       そのモデルがやりとりしているデータベースの
    #       テーブルに保存されている、
